@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap');
+
+:root {
+    --clr-neutral-1: hsl(0, 0%, 100%);
+    --clr-neutral-2: hsl(210, 46%, 95%);
+    --clr-neutral-3: hsl(212, 23%, 69%);
+    --clr-neutral-3-shadow: hsla(212, 23%, 69%, 0.3);
+    --clr-neutral-4: hsl(214, 17%, 48%);
+    --clr-neutral-5: hsl(217, 19%, 35%);
+    --clr-attribution: hsl(228, 45%, 44%);
+
+    --ff: 'Manrope', sans-serif;
+}
+
+/* RESET */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    list-style: none;
+}
+
+picture,
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+.sr-only {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+body {
+    min-height: 100vh;
+    line-height: 1;
+    display: grid;
+    place-content: center;
+    gap: 1rem;
+    background-color: var(--clr-neutral-2);
+    padding: 1rem;
+    font-family: var(--ff);
+}
+
+/* MAIN (Article) */
+.article {
+    display: grid;
+    gap: 1rem;
+    background-color: var(--clr-neutral-1);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    width: clamp(18rem, 88vw, 32rem);
+    box-shadow: 0 2rem 2rem var(--clr-neutral-3-shadow);
+    position: relative;
+}
+
+.article__img {
+    height: clamp(12rem, 54vw, 20rem);
+    object-fit: cover;
+    object-position: left 0 top -1rem;
+}
+
+.article__text {
+    display: grid;
+    gap: 0.8rem;
+    padding: 1rem 10.5%;
+    font-size: 0.83rem;
+    color: var(--clr-neutral-4);
+    line-height: 1.5;
+}
+
+.article__title {
+    font-size: 1rem;
+    color: var(--clr-neutral-5);
+}
+
+.article__author,
+.share__box,
+.share__options {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.article__author {
+    margin-top: 1rem;
+}
+
+.author__picture {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+}
+
+.author__name {
+    color: var(--clr-neutral-5);
+    font-weight: bold;
+}
+
+.share__btn {
+    display: grid;
+    place-content: center;
+    padding-bottom: 0.2rem;
+    margin-left: auto;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: var(--clr-neutral-2);
+    color: var(--clr-neutral-4);
+    cursor: pointer;
+    transition: 0.25s;
+    z-index: 1;
+}
+
+.share__btn:hover,
+.share__btn:focus-visible,
+.active {
+    background-color: var(--clr-neutral-4);
+    color: var(--clr-neutral-1);
+}
+
+.share__box {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: var(--clr-neutral-5);
+    width: 100%;
+    padding: 1.5rem 10%;
+    color: var(--clr-neutral-3);
+    display: none;
+}
+
+.share__label {
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+}
+
+.share__options img {
+    transition: 0.25s;
+}
+
+.share__options a:hover img {
+    filter: brightness(75%);
+    transform: scale(1.1);
+}
+
+.show {
+    display: flex;
+}
+
+/* DESKTOP */
+@media screen and (min-width: 55rem) {
+    .article {
+        grid-template-columns: 1fr 1.51fr;
+        width: clamp(45.6rem, 50vw, 60rem);
+        overflow: visible;
+    }
+
+    .article__img {
+        height: 100%;
+        object-position: left;
+        border-radius: 0.5rem 0 0 0.5rem;
+    }
+
+    .article__text {
+        align-content: space-around;
+        padding: 2.05rem 9% 1.95rem 5.75%;
+        font-size: clamp(0.83rem, 0.8vw, 0.95rem);
+    }
+
+    .article__title {
+        font-size: clamp(1.28rem, 1.3vw, 1.5rem);
+        line-height: 1.365;
+    }
+
+    .article__author {
+        margin-top: 0.45rem;
+        position: relative;
+    }
+
+    .share__box {
+        position: absolute;
+        left: 70%;
+        bottom: 150%;
+        width: 60%;
+        justify-content: center;
+        padding: 1.25rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 1rem 1rem var(--clr-neutral-3-shadow);
+    }
+
+    .share__box::after {
+        content: '';
+        position: absolute;
+        top: 90%;
+        left: 40%;
+        border: 1rem solid;
+        border-color: transparent;
+        border-top-color: var(--clr-neutral-5);
+        transform: rotate(10deg);
+    }
+}
+
+/* FOOTER */
+.attribution {
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+.attribution a {
+    color: var(--clr-attribution);
+}
+
+@media screen and (min-width: 55rem) and (min-height: 50rem) {
+    .attribution {
+        position: fixed;
+        bottom: 1rem;
+        justify-self: center;
+    }
+}
